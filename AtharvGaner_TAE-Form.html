@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Registration Form</title>
+<style type="text/css">
+	tr{
+	    border: 1px solid black;
+		border-radius: 100px;
+		background: #EFEFBB;  
+		background: -webkit-linear-gradient(to top, #D4D3DD, #EFEFBB); 
+		background: linear-gradient(to top, #D4D3DD, #EFEFBB); 
+	}
+	footer{
+		position: absolute;
+  		bottom: 0;
+  		width: 100%;
+ 	 	height: 2.5rem; 
+ 	 	background: #2980B9;  
+		background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);  
+		background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9);      
+	}
+	div{
+		background: #2980B9;
+		background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);
+		background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9); 
+	}
+
+</style>
+<script type="text/javascript">
+function verify()
+{
+	var fname = document.getElementById("fname");
+	var lname = document.getElementById("lname");
+	var gender = document.getElementsByName("gender");
+	var email = document.getElementById("email");
+	var address = document.getElementById("address");
+	var pass = document.getElementById("pass");
+	var city = document.getElementById("city");
+	var pin = document.getElementById("pin");
+	var msg = new Array();
+	var flag = 1;
+	var message = "Following Details are Required\n";
+	var message2 = "Following Details are Required<br>";
+	if(fname.value == "")
+	{
+		msg[0] = "First name is Required";
+		flag = 0;
+	} else { msg[0] = ""; }
+
+	if(lname.value == "")
+	{
+		msg[1] = "Last name is Required";
+		flag = 0;
+	} else { msg[1] = ""; }
+
+	if(gender[0].checked == false && gender[1].checked == false)
+	{
+		msg[2] = "Select Gender";
+		flag = 0;
+	} else { msg[2] = ""; }
+
+	if(address.value == "")
+	{
+		msg[3] = "Address is Required";
+		flag = 0;
+	} else { msg[3] = ""; }
+
+	if(email.value == "")
+	{
+		msg[4] = "Proper Email is Required.";
+		flag = 0;
+	} else { msg[4] = ""; }
+
+	if(pass.value == "")
+	{
+		msg[5] = "Password is Required";
+		flag = 0;
+	} else { msg[5] = ""; }
+	if(city.value == "")
+	{
+		msg[6] = "City Name is Required";
+		flag = 0;
+	} else { msg[6] = ""; }
+	if(pin.value == "")
+	{
+		msg[7] = "Pin code is Required";
+		flag = 0;
+	} else { msg[7] = ""; }
+
+	if(pass.value.length < 8)
+	{
+		msg[8] = "Password must be 8 characters long";
+		flag = 0;
+	} else { msg[8] = ""; }
+
+	if(flag == 0)
+	{
+		// Show Error Messages
+		for(var x=0;x<=8;x++)
+		{
+			if(msg[x] != "")
+			{
+				message += msg[x] + "\n";
+				message2 += msg[x] + "<br>";
+			}
+		}
+		alert(message);
+		document.getElementById("abc").innerHTML = "<p style='color:red;'>"+message2+"</p>";
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+</script>
+</head>
+<body>
+<div align="center">
+	<h1>Registration Form</h1>
+    <h3 id="abc"></h3>
+    <form method="post" action="" onSubmit="return verify()">
+    	<table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+        	<td colspan="4" align="center">* You need to fill all the fields to submit the form.</td>
+       </tr>
+       <tr>
+       	<td>First Name: </td>
+        <td><input type="text" name="fname" id="fname" size="25" placeholder="Enter First Name" /></td>
+        <br>
+        <td>Last Name: </td>
+        <td><input type="text" name="lname" id="lname" size="25" placeholder="Enter Last Name" /></td>
+       </tr>
+       <tr>
+       	<td>Gender:</td>
+        <td><input type="radio" name="gender" value="Male" /> Male
+        	<input type="radio" name="gender" value="Female" /> Female
+        	<input type="radio" name="gender" value="Other" /> Other
+        </td>
+        <td>Email: </td>
+        <td><input type="text" name="email" id="email" size="25" placeholder="Enter Email" /></td>
+        <br>
+        </tr>
+        <tr>
+        	<td>Address: </td>
+        <td><input type="text" name="address" id="address" size="25" placeholder="Enter Your Address" /></td>
+        	<td>Password:</td>
+        <td><input type="password" name="password" size="25" id="pass" placeholder="Enter Password" /></td>
+        </tr>
+        <tr>
+        	<td>City: </td>
+        <td><input type="text" name="city" id="city" size="25" placeholder="Enter Your City Name" /></td>
+        	<td>Pin Code: </td>
+        <td><input type="text" name="pinn" id="pin" size="25" placeholder="Enter Your Pin Code" /></td>
+        </tr>
+            <tr>
+            	<td align="center" colspan="4">
+                <input type="submit" value="REGISTER" />
+                <input type="reset" value="CLEAR" />
+                </td>
+            </tr> 
+        </table>
+    </form>
+    <br>
+	<br>
+</div>
+<footer align='center'>
+	<h3>&copy;
+		Atharv Ganer | Department of Electronics and Telecommunication | USN: ET20059 | S.B. Jain, Kalmeshwar, Nagpur
+	</h3>
+</footer>
+</body>
+</html>
